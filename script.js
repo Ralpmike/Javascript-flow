@@ -246,9 +246,13 @@ if (STUDENT_SCORE >= 0 && STUDENT_SCORE <= 39) {
 //switch statement
 
 let w = 1;
-// w = w + 1;
 
-console.log(++w); // pre-increment value is 2
+w += 1; // w = w + 1;
+// w -= 1 // w = w - 1
+w /= 1 // w = w / 1
+w *= 1 // w = w * 1
+
+// console.log(++w); // pre-increment value is 2
 console.log(w++); //post-increment value is 1
 
 // for (Initialization; Condition; Increment) {
@@ -256,11 +260,15 @@ console.log(w++); //post-increment value is 1
 // }
 
 
+let loopResult = 0 ;
 
-
-for(let y = 0;  y <= 5; y++){
+for(let y = 0;  y <= 5; ++y){
+  // debugger;
   console.log(y);
+  loopResult = loopResult + y
 }
+console.log("loopResult", loopResult);
+
 
 /**
  * y = 0, y = 0, y =1
@@ -271,3 +279,7 @@ for(let y = 0;  y <= 5; y++){
  * y = 5, y  = 5, y = 6
  * y = 6, y=6
  */
+
+
+// ?CLASS WORK:
+//*write a program using for loop to print numbers from 1 to 10
