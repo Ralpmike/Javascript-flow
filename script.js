@@ -249,8 +249,8 @@ let w = 1;
 
 w += 1; // w = w + 1;
 // w -= 1 // w = w - 1
-w /= 1 // w = w / 1
-w *= 1 // w = w * 1
+w /= 1; // w = w / 1
+w *= 1; // w = w * 1
 
 // console.log(++w); // pre-increment value is 2
 console.log(w++); //post-increment value is 1
@@ -259,16 +259,16 @@ console.log(w++); //post-increment value is 1
 //   //what should happen
 // }
 
+// let loopResult = 0 ;
+// let t = 0;
+// const condition = t <= 5;
 
-let loopResult = 0 ;
-
-for(let y = 0;  y <= 5; ++y){
-  // debugger;
-  console.log(y);
-  loopResult = loopResult + y
-}
-console.log("loopResult", loopResult);
-
+// for(; condition; ++y){
+//   // debugger;
+//   console.log(y);
+//   loopResult = loopResult + y
+// }
+// console.log("loopResult", loopResult);
 
 /**
  * y = 0, y = 0, y =1
@@ -280,6 +280,140 @@ console.log("loopResult", loopResult);
  * y = 6, y=6
  */
 
-
 // ?CLASS WORK:
 //*write a program using for loop to print numbers from 1 to 10
+
+//? The while loop
+
+let n = 3;
+while (n > 0) {
+  console.log(n);
+  n--;
+}
+//? convert string to number using the + operator/ unary operator
+// const userInput = +prompt("Enter a number", "");
+//? An explicit type conversion of a string to a number
+
+// console.log(userInput);
+// console.log(typeof userInput);
+
+// let whileTrue = true;
+
+// while (whileTrue) {
+//   let userInput = Number(prompt("Enter an even number", ""));
+//   if (userInput === 0) {
+//     continue;
+//   }
+
+//   if (userInput % 2 === 0) {
+//     console.log("You have entered an even number", userInput);
+//     alert("You have entered an even number", userInput);
+
+//     whileTrue = false;
+//   }
+
+//   continue;
+// }
+
+// let sum = 12;
+
+// if (userInput < 1 || userInput > 20) {
+//   alert("You have guessed out of range");
+// }
+
+// while (userInput >= 1 && userInput <= 20) {
+//   if ((userInput = sum)) {
+//     alert("You have guessed the correct number");
+
+//     break;
+//   }
+
+// sum = sum + userInput;
+// userInput--;
+// }
+
+// console.log(sum);
+
+//?Do while loop
+let i = 1;
+do {
+  console.log(i);
+  i++;
+} while (i <= 10);
+
+
+//? tyoes of scopes
+//? Global scope
+//? Local scope
+//? Block scope
+//? Function scope
+
+//? ?block scope
+// let m = 1;
+// {
+//   const i = 2;
+//   // var c = 3;
+//   //block scopes
+// }
+
+// if(a === 10){
+//   console.log("m", m)
+// }
+
+
+//?TDZ = temporal dead zone
+// try {
+  
+// } catch (error) {
+  
+// }
+
+
+let xyz =10
+console.log(xyz)
+
+
+//?
+
+//? function declaration
+
+function calculate(a, b, mathOperation) {
+  // ? code to execute
+
+  if ("add".includes(mathOperation)) {
+    let sum = a + b;
+    console.log("sum", sum);
+  } else if ("subtract".includes(mathOperation)) {
+    let difference = a - b;
+    console.log("difference", difference);
+  } else if ("multiply".includes(mathOperation)) {
+    let product = a * b;
+    console.log("product", product);
+  } else {
+    console.log("Invalid math operation");
+  }
+
+  //? the return keyword
+  return;
+}
+greetMe();
+
+//? function without arguments nor parameters
+function greetMe(){
+  console.log("Good morning, Boss")
+}
+
+
+
+// greetMe()
+// greetMe()
+// greetMe()
+
+
+//? We need to invoke or call the function
+//?parameters
+//? arguments
+calculate(10, 14, "sub");
+
+
+console.log("samuel".startsWith("el"))
