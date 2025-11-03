@@ -341,7 +341,6 @@ do {
   i++;
 } while (i <= 10);
 
-
 //? tyoes of scopes
 //? Global scope
 //? Local scope
@@ -360,18 +359,15 @@ do {
 //   console.log("m", m)
 // }
 
-
 //?TDZ = temporal dead zone
 // try {
-  
+
 // } catch (error) {
-  
+
 // }
 
-
-let xyz =10
-console.log(xyz)
-
+let xyz = 10;
+console.log(xyz);
 
 //?
 
@@ -383,37 +379,217 @@ function calculate(a, b, mathOperation) {
   if ("add".includes(mathOperation)) {
     let sum = a + b;
     console.log("sum", sum);
+    return sum;
   } else if ("subtract".includes(mathOperation)) {
     let difference = a - b;
     console.log("difference", difference);
+    return difference;
   } else if ("multiply".includes(mathOperation)) {
     let product = a * b;
     console.log("product", product);
+    return product;
   } else {
     console.log("Invalid math operation");
   }
 
   //? the return keyword
-  return;
 }
 greetMe();
 
 //? function without arguments nor parameters
-function greetMe(){
-  console.log("Good morning, Boss")
+function greetMe() {
+  console.log("Good morning, Boss");
 }
 
-
-
 // greetMe()
 // greetMe()
 // greetMe()
-
 
 //? We need to invoke or call the function
 //?parameters
 //? arguments
 calculate(10, 14, "sub");
 
+const returnResult = calculate(10, 14, "multi");
 
-console.log("samuel".startsWith("el"))
+console.log("returnResult", returnResult);
+
+console.log("samuel".startsWith("el"));
+
+//?hoisting -- Global - creation phase and  excution phase
+//? scope chain
+//?TDZ
+
+console.log("developer", developer);
+
+var developer = "Ukpono";
+
+console.log("developer", developer);
+
+/**
+ * GEC
+ * CP:
+ * this
+ * developer= undefined
+ *
+ * EP:
+ * console.log("developer", undefined)
+ * var developer = "Ukpono"
+ * console.log("developer", "Ukpono")
+ *
+ *
+ *
+ *
+ */
+
+{
+  let AKWPOLY = "David";
+  console.log("developer", developer);
+
+  var developer = "Ukpono";
+
+  console.log("developer", developer);
+  console.log("AKWPOLY", AKWPOLY);
+}
+
+let AKWPOLY = "Emediong";
+console.log("AKWPOLY", AKWPOLY);
+
+let UCL = "Real Madrid";
+
+function getUCLTeam() {
+  console.log("UCL", UCL);
+}
+
+getUCLTeam();
+
+let playerName = "Mbappe";
+console.log("playerName", playerName);
+
+//?closure
+{
+  //?FEC
+  function makeCounter() {
+    let count = 0;
+
+    return function () {
+      count++;
+      return count;
+    };
+  }
+
+  const result = makeCounter();
+
+  const count = result();
+  const count1 = result();
+  const count2 = result();
+
+  console.log("count", count);
+  console.log("count1", count1);
+  console.log("count2", count2);
+}
+
+//? function expression
+
+const eatMe = function () {
+  console.log("I am eating");
+};
+eatMe();
+
+//?arrow function
+{
+  //? double line you insert the curly braces
+  const eatMe = () => {
+    const name = "Daniel";
+    console.log("I am eating");
+  };
+  eatMe();
+
+  //? single line you do not insert the curly braces
+  const biteMe = () => console.log("I am biting");
+  biteMe();
+
+}
+
+{
+  function squareMe(number) {
+    return function (index) {
+      return number ** index;
+    };
+  }
+
+  const square = squareMe(4);
+
+  const result = square(4);
+  console.log("result", result);
+}
+// var occupation = "Doctor";
+
+console.log(this);
+
+//?person object
+
+const person = {
+  name: "Daniel",
+  age: 30,
+  occupation: "Driver",
+  isAlive: true,
+  profile: () => {
+    console.log(this.name, this.age, this.isAlive, this.occupation);
+  }
+};
+
+person.profile();
+
+
+{
+
+var me = "Okocha";
+
+function readMe(){
+  var me = "Daniel";
+
+  console.log(me);  
+}
+
+var she = "Ukpono";
+
+// console.log(me);
+
+
+readMe()
+
+}
+
+console.log(she);
+
+
+
+{
+
+
+function makeCounter() {
+  let count = 0;
+  return {
+    increment() {
+    count++;
+    console.log(count);
+    return count;
+  },
+  decrement() {
+    count--;
+    return count;
+  },
+  getCount() {
+    return count;
+  }
+}
+
+}
+
+
+const counter = makeCounter();
+
+
+counter.increment();
+}
