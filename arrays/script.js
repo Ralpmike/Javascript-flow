@@ -55,7 +55,7 @@ if(carModels.includes(model)){
     console.log("We do not have this model: " + model)
 }
 
-
+//? indexOf returns the index of an item in an array
 console.log(carModels.indexOf("Mercedez BenZ"));
 console.log(carModels)
 
