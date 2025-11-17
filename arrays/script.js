@@ -131,3 +131,98 @@ const evenNumbers = numbers.filter(function(number){
 })
 
 console.log(evenNumbers)
+
+//?sorting, searching, transforming arrays
+
+const scores = [300, 450, 150, 600, 750, 200, 900, 1000, 50, 400]
+
+console.log(scores)
+
+//?sort() method sorts array elements in place and returns the sorted array
+// scores.sort()
+
+const sortedNumbers = scores.sort((a, b) => b - a )
+
+console.log(sortedNumbers)
+console.log(scores)
+
+
+//?searching an array
+
+const cities = ["Lagos", "Abuja", "Port Harcourt", "Kano", "Ibadan", "Benin", "Enugu", "Aba", "Jos", "Maiduguri", "Zaria", "Ilorin"]
+
+let cityToFind = "New Jersey"
+const searchedCity = cities.find((city) => city === cityToFind)
+console.log(searchedCity)
+
+if(searchedCity){
+    console.log(`We have ${searchedCity} in our list of cities`)
+} else {
+    console.log("City not found")
+}
+
+cityToFind = "Makurdi"
+const indexOfCity = cities.findIndex((city) => city === cityToFind)
+console.log(indexOfCity)
+
+if(indexOfCity !== -1){
+    console.log(`We have ${cities[indexOfCity]} in our list of cities at index ${indexOfCity}`)
+} else {
+    console.log("City not found")
+}
+
+//? reduce method executes a reducer function on each element of the array, resulting in a single output value.
+
+const expenses = [500, 1000, 1500, 2000, 2500, 3000]
+
+const totalExpense = expenses.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+console.log(`Total Expense: ${totalExpense}`)
+
+let totalExpense2 = 0
+
+for(let i = 0; i < expenses.length; i++){
+    // totalExpense2 = totalExpense2 +  expenses[i]
+    totalExpense2 += expenses[i]
+}
+
+console.log(`Total Expense using for loop: ${totalExpense2}`)
+
+
+//? Slice and Splice
+
+const animals = ["Lion", "Tiger", "Elephant", "Giraffe", "Zebra", "Cheetah", "Leopard", "Rhinoceros", "Hippopotamus", "Buffalo"]
+
+const slicedAnimals = animals.slice(4, 5)
+
+console.log(animals)
+console.log(slicedAnimals)
+
+
+const splicedAnimals = animals.splice(2, 4)
+
+console.log(animals)
+console.log(splicedAnimals)
+
+
+//? Joining arrays concat()
+
+const firstArray = [1,2,3,4,5]
+const secondArray = [6,7,8,9,10]
+
+const joinedArray = firstArray.concat(secondArray)
+const joinedArray2 = [...firstArray, ...secondArray] //?spread operator
+
+console.log(joinedArray)
+console.log(joinedArray2)
+
+//? unpacking arrays 
+const colors = ["Red", "Green", "Blue", "Yellow", "Purple"]
+const firxstColor = colors[0]
+
+//?Array destructuring
+const [firstColor, secondColor, thirdColor, ...otherColors] = colors //?rest operator
+
+console.log(firstColor)
+console.log(secondColor)
+console.log(thirdColor)
+console.log(otherColors)
