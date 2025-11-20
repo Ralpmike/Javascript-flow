@@ -211,8 +211,8 @@ const student = {
 
 
 //* Destructuring assignment
-
-const {school, name, age:myage, nationality, } = student
+//? renameing age to myage
+const {school, name, age: myage, nationality, } = student
 
 console.log(name, myage, school, nationality);
 
