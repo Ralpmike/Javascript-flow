@@ -203,6 +203,7 @@ const student = {
   nationality: "Nigerian",
   school: "Unversity of Uyo",
   state: "Akwa Ibom",
+  
   greet: function(){
     console.log("the this keyword", this)
     return `Good evening ${this.name} from ${this.state} and studying at ${this.school}`
