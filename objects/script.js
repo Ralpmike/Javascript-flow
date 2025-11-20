@@ -1,3 +1,4 @@
+// "use strict";
 //? Object literal
 
 const object = new Object();
@@ -70,3 +71,153 @@ carModel.year = 2025;
 carModel["color"] = "Pink";
 
 console.log(carModel);
+
+//? Object methods
+
+const student = {
+  name: "David mendie",
+  age: 25,
+  nationality: "Nigerian",
+  school: "Unversity of Uyo",
+  state: "Akwa Ibom",
+  // greet: function() {
+  //   console.log("Good evening")
+  // }
+  greet(){
+    console.log(`Good evening ${student.name} from ${student.state} and studying at ${student.school}`)
+  }
+}
+
+student.greet()
+
+//? stringified object
+const me = {
+  "name": "Daniel",
+  "age": 30,
+  "occupation": "Driver",
+}
+
+//? Converting object to string
+const studentStringified = JSON.stringify(student)
+
+
+//?
+
+console.log(studentStringified)
+
+
+//* Converting string to object
+const studentObjectified = JSON.parse(studentStringified)
+
+console.log(studentObjectified);
+
+
+
+
+let myName = "Daniel"
+
+
+let personName = myName
+
+personName = "David"
+
+
+let schoolName = {
+  school: "University of Uyo",
+}
+
+let mySchoolName = schoolName
+
+console.log(personName, myName)
+
+mySchoolName.school = "Federal University of Technology Owerri"
+
+console.log(mySchoolName, schoolName)
+
+
+//? the this keyword
+console.log(this)
+
+
+
+{
+
+const student = {
+  name: "David mendie",
+  age: 25,
+  nationality: "Nigerian",
+  school: "Unversity of Uyo",
+  state: "Akwa Ibom",
+  // greet: function() {
+  //   console.log("Good evening")
+  // }
+  greet: function(){
+    console.log("the this keyword", this)
+    return `Good evening ${this.name} from ${this.state} and studying at ${this.school}`
+  },
+//?An arrow does not have the this keyword
+  // running: function(){
+  //   return () => {
+  //     console.log(`${this.name} is running fast`)
+  //   }
+
+  // }
+  running:  () => {
+      console.log(`${this.name} is running fast`)
+    }
+
+  }
+  
+
+
+
+student.greet()
+
+
+
+
+const studentCopy = student
+
+const geet = studentCopy.greet()
+
+// const running  = studentCopy.running()
+studentCopy.running()
+
+// running()
+
+console.log(geet);
+
+
+
+
+}
+
+//?Object destructuring
+
+{
+
+
+const student = {
+  name: "David mendie",
+  age: 25,
+  nationality: "Nigerian",
+  school: "Unversity of Uyo",
+  state: "Akwa Ibom",
+  greet: function(){
+    console.log("the this keyword", this)
+    return `Good evening ${this.name} from ${this.state} and studying at ${this.school}`
+  },
+}
+
+
+//* Destructuring assignment
+
+const {school, name, age:myage, nationality, } = student
+
+console.log(name, myage, school, nationality);
+
+
+
+
+
+}

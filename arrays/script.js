@@ -226,3 +226,19 @@ console.log(firstColor)
 console.log(secondColor)
 console.log(thirdColor)
 console.log(otherColors)
+
+
+//? Multidimensional arrays
+
+
+function printLetter(letter, ...otherLetters){
+    console.log(letter)
+    console.log(otherLetters)
+}
+const letters = ["A", "B", "C", "D", "E", "F", "G"]
+printLetter(...letters)
+// printLetter("B")
+// printLetter("C")
+
+
+//?
