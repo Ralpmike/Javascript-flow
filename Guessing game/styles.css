@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    /* height: 100vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.container div:first-of-type {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 10px;
+}
+
+input[type="button"]{
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(11, 53, 11);
+    color: white;
+}
+input[type="button"]:hover{
+    background-color: green;
+    cursor: pointer;
+}
+
+input[type="number"]{
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    outline: none;
+}
+
+.show_secret_number{
+    font-size: 3rem;
+}
+
+.btn{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(139, 11, 11);
+    color: white;
+}
+.btn:hover{
+    background-color: red;
+    cursor: pointer;
+}
