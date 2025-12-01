@@ -5,7 +5,7 @@
 }
 
 body{
-    /* height: 100vh; */
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,7 +21,7 @@ body{
     gap: 20px;
 }
 
-.container div:first-of-type {
+.container > div:nth-of-type(2) {
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -68,4 +68,9 @@ input[type="number"]{
 .btn:hover{
     background-color: red;
     cursor: pointer;
+}
+.chance{
+    color: yellow;
+    font-weight: 900;
+    font-size: 32px;
 }
