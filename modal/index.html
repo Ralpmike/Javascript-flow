@@ -6,23 +6,28 @@
     <title>Modal</title>
     <link rel="stylesheet" href="./index.css" />
   </head>
-  <body>
-    <div class="container">
-      <div class="over-lay"></div>
-      <div class="modal">
-        <div class="modal-content">
-          <span class="close-button">&times;</span>
-          <h2>Modal Title</h2>
-          <p>
-            This is a simple modal window. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Soluta qui non voluptas doloremque
-            odit, impedit quidem ea consequatur, at excepturi nulla dicta?
-            Maiores rem doloribus accusantium consequatur natus dolore
-            aspernatur!
-          </p>
-        </div>
+  <body id="body_listener">
+    <input type="button" value="Show modal" id="show_modal" />
+    <div class="modal hidden">
+      <div class="modal-content">
+        <span class="close_modal">&times;</span>
+        <h2>Modal Title</h2>
+        <p class="p_color">
+          This is a simple modal window. Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Soluta qui non voluptas doloremque odit, impedit
+          quidem ea consequatur, at excepturi nulla dicta? Maiores rem doloribus
+          accusantium consequatur natus dolore aspernatur!
+        </p>
       </div>
     </div>
+
+
+    <div id="handler_1">
+      <p class="" id="handler_2">
+        <span id="target_object">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam ea vel non deleniti ex! Doloribus similique libero commodi dolor hic. Esse nulla ipsum similique culpa ratione odit, perferendis ex amet.</span>
+      </p>
+    </div>
+
     <script src="./script.js"></script>
   </body>
 </html>
