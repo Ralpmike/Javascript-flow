@@ -72,3 +72,53 @@ document.addEventListener("keydown", function(e){
     }
     console.dir(e.key)
 })
+
+const handler = document.getElementById("handler_1")
+handler.addEventListener("click", function(e){
+    //? e event object
+    console.dir(e.target)
+})
+
+
+//? How add content to the DOM
+
+const header_2 = document.createElement("h2")
+// header_2.textContent = "<span>Obi has returned</span>"
+header_2.innerHTML = "<span style='color:red;'>Obi has returned</span>"
+// header_2.hidden = true
+handler.prepend(header_2)
+
+console.dir(header_2)
+
+//? Anchor
+
+const anchortag = document.createElement("a")
+anchortag.href = "https://www.youtube.com"
+anchortag.textContent = "Youtube"
+
+handler.append(anchortag)
+
+console.dir(anchortag)
+
+const inputElem = document.createElement("input")
+inputElem.placeholder = "Enter your name"
+// inputElem.style.padding = "20px"
+inputElem.style.cssText = `
+color: green;
+border: solid green 1px;
+padding: 5px 30px
+`
+inputElem.type = "number"
+inputElem.id = "number-elem"
+document.body.append(inputElem)
+
+console.dir(inputElem)
+
+const ulElem = document.createElement("ul")
+// const liElem = document.createElement("li")
+// liElem.textContent = "Banana"
+
+// ulElem.append(liElem)
+ulElem.insertAdjacentHTML("", "<li>Banana</li>")
+
+handler.append(ulElem)
