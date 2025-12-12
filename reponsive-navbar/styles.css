@@ -1,0 +1,75 @@
+/** NavBar */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic navbar styling */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background: #333;
+  color: #fff;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Mobile menu toggle hidden on desktop */
+.menu-toggle {
+  font-size: 25px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 55px;
+    background: #444;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    border-radius: 8px;
+   
+    /* Animation defaults */
+    opacity: 0;
+    left: -100%;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .nav-links li {
+    padding: 15px;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  /* When active */
+  .nav-links.active {
+    opacity: 1;
+    left: 0;
+  }
+}

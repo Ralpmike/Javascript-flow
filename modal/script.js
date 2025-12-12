@@ -112,13 +112,27 @@ inputElem.type = "number"
 inputElem.id = "number-elem"
 document.body.append(inputElem)
 
-console.dir(inputElem)
+console.log(inputElem.outerHTML)
 
+
+const elem = document.getElementById("add_content") 
 const ulElem = document.createElement("ul")
 // const liElem = document.createElement("li")
 // liElem.textContent = "Banana"
-
+elem.append(ulElem)
 // ulElem.append(liElem)
-ulElem.insertAdjacentHTML("", "<li>Banana</li>")
+ulElem.insertAdjacentHTML("afterend", "<li>Banana</li> <li>Orange</li>")
 
-handler.append(ulElem)
+// handler.append(ulElem)
+
+
+const pElem = document.querySelector("#add_content p")
+console.log(pElem)
+pElem.className = "pElem"
+
+pElem.setAttribute("id", "david")
+pElem.setAttribute("boy", "joshua")
+const value = pElem.getAttribute("boy")
+console.log(value);
+
+pElem.removeAttribute("id")
