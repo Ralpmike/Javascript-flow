@@ -91,3 +91,8 @@ Implement a game reset functionality, so that the player can make a new guess! H
 
 GOOD LUCK 
 */
+
+
+//?
+
+console.log(document.body.TEXT_NODE);
