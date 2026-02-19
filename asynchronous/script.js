@@ -98,31 +98,31 @@ setTimeout(() => {
 //synchro
 {
   function doStep1(init) {
-  return init + 1;
-}
+    return init + 1;
+  }
 
-function doStep2(init) {
-  return init + 2;
-}
+  function doStep2(init) {
+    return init + 2;
+  }
 
-function doStep3(init) {
-  return init + 3;
-}
+  function doStep3(init) {
+    return init + 3;
+  }
 
-function doSomething(){
+  function doSomething() {
 
-let result;
+    let result;
 
-result = doStep1(1)
-result = doStep2(result)
-result = doStep3(result)
-
-
-console.log(result)
-}
+    result = doStep1(1)
+    result = doStep2(result)
+    result = doStep3(result)
 
 
-// doSomething()
+    console.log(result)
+  }
+
+
+  // doSomething()
 
 }
 
@@ -151,17 +151,17 @@ function doStep5(init, callback) {
   callback(result);
 }
 
-function doOperation(){
+function doOperation() {
   doStep1(1, (result1) => {
-      doStep2(result1, (result2)=>{
-        doStep3(result2, (result3)=> {
-          doStep4(result3, (result4)=>{
-            doStep5(result4, (result5)=>{
-              console.log(`my result: ${result5}`)
-            })
+    doStep2(result1, (result2) => {
+      doStep3(result2, (result3) => {
+        doStep4(result3, (result4) => {
+          doStep5(result4, (result5) => {
+            console.log(`my result: ${result5}`)
           })
         })
       })
+    })
   })
 }
 
@@ -199,18 +199,18 @@ request.addEventListener("loadend", () => {
 
 
 const container = document.querySelector(".container")
-function displayCountries(data){
+function displayCountries(data) {
   container.innerHTML = ""
 
   data.forEach((country) => {
-   const city = `
+    const city = `
     <div>
       <img src="${country.flags.png}" alt="${country.flags.alt}">
       <h2>${country.name.common}</h2>
     </div>
    `
 
-   container.innerHTML += city
+    container.innerHTML += city
   })
 
 }
@@ -218,11 +218,11 @@ function displayCountries(data){
 console.log(request)
 
 
-request.onabort = ()=>{
+request.onabort = () => {
 
 }
 
-request.addEventListener("abort", ()=>{
+request.addEventListener("abort", () => {
   console.log("aborted")
 })
 
@@ -248,4 +248,69 @@ request2.onloadend = () => {
 //? BASEURL = "https://jsonplaceholder.typicode.com"
 // 1. make an api call to the endpoint "/posts" above to display 50 posts
 //
- 
+
+
+//Promises
+
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject("Promise rejected")
+    // resolve("Promise resolved successfully")
+  }, 4000)
+})
+
+console.log(promise)
+
+//.then hadlers
+
+promise.then(
+  (response) => console.log(response),
+).catch((error) => console.error(error))
+
+
+
+const myPromise = new Promise((resolve, reject) => {
+  const newResponse = new XMLHttpRequest()
+
+  newResponse.open("GET", `${BASEURL}/all?fields=name,flags,capital`)
+  newResponse.send()
+
+  newResponse.onloadend = () => {
+    const data = JSON.parse(newResponse.response)
+    resolve(data)
+  }
+
+  newResponse.onerror = () => {
+    reject("An error occurred while fetching data")
+  }
+})
+
+// myPromise.then((response) => {
+//   console.log(response)
+//   displayCountries(response.splice(0, 10))    
+// }
+// ).catch((error) => {
+//   console.error(error)
+
+// })
+
+
+//? fetch api
+
+fetch(`${BASEURL}/all?fields=flags,capital`, {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json"
+  },
+}).then((response) => {
+  if (response.status !== 200) {
+    throw new Error("Network response was not ok")
+
+  }
+  // console.log(response.json())
+  return response.json()
+}).then((data) => {
+  console.log(data)
+}).catch((error) => {
+  console.log("Fetch error:", error.message)
+})
