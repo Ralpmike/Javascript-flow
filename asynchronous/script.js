@@ -314,3 +314,22 @@ fetch(`${BASEURL}/all?fields=flags,capital`, {
 }).catch((error) => {
   console.log("Fetch error:", error.message)
 })
+
+
+// async/await
+
+
+async function getData() {
+  try {
+    const response = await fetch(`${BASEURL}/all?fields=flags,capital`)
+    if (response.status !== 200) {
+      throw new Error("Network response was not ok")
+    }
+    const data = await response.json()
+    console.log(data, 'this is async/await function')
+  } catch (error) {
+    console.log("Fetch error:", error.message)
+  }
+}
+
+getData();
