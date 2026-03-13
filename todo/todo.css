@@ -76,6 +76,14 @@ button:hover {
     text-decoration: line-through;
     color: #666;
 }
+.strike-text{
+    text-decoration: line-through;
+    color: #666;
+}
+.todo-item.edit{
+    border: solid green 2px;
+    font-size: 48px;
+}
 
 .todo-content {
     display: flex;
