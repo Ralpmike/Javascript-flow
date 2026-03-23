@@ -1,40 +1,8 @@
 "use strict"
 
-// document.getElementById("todo-form").addEventListener("click", (e)=>{
-//     e.preventDefault(e)
-
-//     const formData = new FormData(e.target)
-//     const todo = formData.get("todo")
-
-//     const todoItem = {
-//         todo,
-//         isCompleted: false,
-//         id: Date.now().toFixed(4)
-
-//     }
-//     todos.push(todoItem)
-//     document.querySelector("#todo-input").value = ""
-// })
-// document.getElementById("submit").addEventListener("click", function(e){
-//     e.preventDefault()
-//     const todo = document.getElementById("todo-input").value
-
-//     const todoItem = {
-//             todo,
-//             isCompleted: false,
-//             id: Date.now()
-
-//         }
-
-//     localStorage.setItem("todos", JSON.stringify(todoItem))
-//     todos.push(todoItem)
-//     console.log(todos)
-//     document.querySelector("#todo-input").value = ""
-// })
-
 const todoList = document.getElementById("todo-list")
-let todos = JSON.parse(localStorage.getItem("todos")) || []
-console.log(todos)
+let todos = JSON.parse(localStorage.getItem("todoItems")) || []
+let addTodoBtn = document.getElementById("submit")
 let isEditingTodo = false
 let todoToBeEdiited;
 
@@ -45,15 +13,17 @@ document.getElementById("todo-form").addEventListener("submit", (e) => {
     const formData = new FormData(e.target)
     const myTodo = formData.get("todo")
 
+
     if (!myTodo) {
         return;
     }
 
     if (isEditingTodo) {
         todos = todos.map(todoT => todoT.id === todoToBeEdiited.id ? { ...todoT, todo: myTodo } : todoT)
-        localStorage.setItem("todos", JSON.stringify(todos))
+        setTodoToStorage(todos)
         document.getElementById("todo-input").value = ""
         isEditingTodo = false
+         addTodoBtn.innerHTML = "Add Todo" 
         displayTodos()
         return
     }
@@ -65,8 +35,7 @@ document.getElementById("todo-form").addEventListener("submit", (e) => {
 
     }
     todos.push(todoItem)
-    localStorage.setItem("todos", JSON.stringify(todos))
-    console.log(todos)
+    setTodoToStorage(todos)
     displayTodos()
     document.querySelector("#todo-input").value = ""
 })
@@ -98,31 +67,37 @@ todoList.addEventListener("click", (e) => {
         return;
     }
 
-    console.dir(e.target)
-
+    //?Mark a todo as completed
     if (e.target.classList.contains("checkbox")) {
-        const { id } = e.target.dataset
-        console.log(id)
-        let todo = todos.find(todo => todo.id === Number(id))
-        console.log(todo)
+        const todo = getTodoItem(e.target.dataset)
         // todos = todos.map(todo => todo.id === Number(id) ? { ...todo, isCompleted: !todo.isCompleted } : todo)
         todo.isCompleted = !todo.isCompleted;
-
-        localStorage.setItem("todos", JSON.stringify(todos))
+        setTodoToStorage(todos)
         displayTodos()
     }
 
+    //?Edit a todo
     if (e.target.innerHTML === "edit") {
 
-        const { id } = e.target.dataset
-        console.dir(e.target)
-        console.log(id)
-        console.log(e.target.closest(".todo-item"))
+        addTodoBtn.innerHTML = "Update Todo"
 
-        console.log("li", li)
+        const todo = getTodoItem(e.target.dataset)
+        let li = e.target.closest(".todo-item")
+        const todoItems = document.querySelectorAll(".todo-item")
+    
 
-        let todo = todos.find(todo => todo.id === Number(id))
-        console.log("todo", todo)
+        if (!todoItems) {
+            return
+        }
+
+        if (todoItems) {
+            todoItems.forEach(todo => {
+                if (todo.classList.contains("edit")) {
+                    todo.classList.remove("edit")
+                }
+            })
+        }
+
         document.getElementById("todo-input").value = todo?.todo;
 
         todoToBeEdiited = todo
@@ -136,30 +111,28 @@ document.getElementById("clear").addEventListener("click", clearTodos)
 
 function deleteTodo(todoId) {
     todos = todos.filter(todo => todo.id !== todoId)
-    localStorage.setItem("todos", JSON.stringify(todos))
+    setTodoToStorage(todos)
     displayTodos()
 }
 
-
-function deleteItem(todo) {
-    console.log(todo)
-}
-
 function clearTodos() {
-    console.log("Empty todos")
     localStorage.clear()
     todos = []
     displayTodos()
 }
 
+function setTodoToStorage(todos) {
+    localStorage.setItem("todoItems", JSON.stringify(todos))
+}
 
-// function editTodo(todoId){
-//     let todo = todos.find(todo => todo.id === Number(todoId))
-//     document.getElementById("todo-input").value = todo.todo;
+function getTodoItem(todoId) {
+    const { id } = todoId
 
-//     todoToBeEdiited = todo
-//    isEditingTodo = true
-//     displayTodos()
-// console.log(isEditingTodo)
-// console.log(todoToBeEdiited)
-// }
+    if (!id) {
+        return;
+    }
+
+    const todo = todos.find(todo => todo.id === Number(id))
+
+    return todo
+}

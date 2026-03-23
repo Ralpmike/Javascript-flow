@@ -76,9 +76,10 @@ button:hover {
     text-decoration: line-through;
     color: #666;
 }
-.strike-text{
-    text-decoration: line-through;
-    color: #666;
+.todo-text.strike-text{
+    text-decoration: solid 2px line-through;
+    color: rgb(113, 128, 0);
+
 }
 .todo-item.edit{
     border: solid green 2px;
